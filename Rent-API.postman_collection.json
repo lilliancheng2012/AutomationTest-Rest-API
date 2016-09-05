@@ -1,0 +1,156 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Rent-API",
+		"_postman_id": "1068292c-a47e-4550-09d1-19e4d522032e",
+		"description": "Rent Api\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"description": "Users",
+			"item": [
+				{
+					"name": "http://localhost:8080/api/rent/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"User Already registered \"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"Register successful Code\"] = jsonData.code === \"1000\";\n\n/*var jsonData = JSON.parse(responseBody);\ntests[\"Already registered message\"] = jsonData.message === \"The user is already registered.\";*/\n\npostman.setEnvironmentVariable (\"registeredUID\", jsonData.uid);\n\n"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/rent/register",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": \"weymonth\",\r\n  \"email\": \"{{email}}\",\r\n  \"imAccount\": \"wechat\",\r\n  \"password\": \"1111\",\r\n  \"phone\": \"22222\",\r\n  \"username\": \"{{username}}\"\r\n}"
+						},
+						"description": "registerUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/rent/listUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/rent/listUsers",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "listUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/rent/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"Login success message\"] = jsonData.message === \"Login successfully\";"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/rent/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"1111\",\r\n  \"userName\": \"{{username}}\"\r\n}"
+						},
+						"description": "Userslogin"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/rent/updateUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;\n"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/rent/updateUser",
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": \"string1\",\r\n  \"email\": \"string1\",\r\n  \"imAccount\": \"string1\",\r\n  \"password\": \"string1\",\r\n  \"phone\": \"string1\",\r\n  \"uid\": \"{{registeredUID}}\",\r\n  \"username\": \"string1\"\r\n}"
+						},
+						"description": "update User"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/rent/deleteUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"User Already Deleted \"] = responseCode.code === 200;\n\ntests[\"Body matches string\"] = responseBody.has(\"true\");"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/rent/deleteUser/{{registeredUID}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "delete User"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
