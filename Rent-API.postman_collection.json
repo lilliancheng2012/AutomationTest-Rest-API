@@ -8,6 +8,151 @@
 	},
 	"item": [
 		{
+			"name": "Info",
+			"description": "Info",
+			"item": [
+				{
+					"name": "http://localhost:8080/api/createInfo/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Info Already Created \"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"Cretated title\"] = jsonData.title === \"Penrose house\";\n\npostman.setEnvironmentVariable (\"registeredInfoID\", jsonData.id);"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/createInfo/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": \"address1\",\r\n  \"content\": \"string\",\r\n  \"description\": \"description1\",\r\n  \"email\": \"test@gmail.com\",\r\n  \"fee\": 0,\r\n  \"keywords\": \"keywords1\",\r\n  \"linkMan\": \"Mr.Li\",\r\n  \"mapPoint\": \"string\",\r\n  \"phone\": \"0222762000\",\r\n  \"postArea\": \"Auckland\",\r\n  \"qq\": \"12345\",\r\n  \"title\": \"Penrose house\"\r\n}"
+						},
+						"description": "Create Info"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/info/getInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"User Already registered \"] = responseCode.code === 200;"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/info/{{registeredInfoID}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "list one info"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/listAllIInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"User Already registered \"] = responseCode.code === 200;"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/list",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "List All Info"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/updateInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"Updated Info Success\"] = responseBody.has(\"true\");\n\ntests[\"Updated Info Success\"] = responseCode.code === 200;"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/updateInfo/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"address\": \"stringupdate\",\r\n  \"content\": \"stringupdate\",\r\n  \"description\": \"stringupdate\",\r\n  \"email\": \"stringupdate@gmail.com\",\r\n  \"fee\": 0,\r\n  \"id\": \"{{registeredInfoID}}\",\r\n  \"keywords\": \"stringupdate\",\r\n  \"linkMan\": \"stringupdate\",\r\n  \"mapPoint\": \"stringupdate\",\r\n  \"phone\": \"stringupdate\",\r\n  \"postArea\": \"stringupdate\",\r\n  \"qq\": \"123update\",\r\n  \"title\": \"stringupdate\"\r\n}"
+						},
+						"description": "Update Info"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/deleteInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "tests[\"User Already Deleted \"] = responseCode.code === 200;\n\ntests[\"Body matches string\"] = responseBody.has(\"true\");"
+							}
+						}
+					],
+					"request": {
+						"url": "http://localhost:8080/api/deleteInfo/{{registeredInfoID}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "delete Info"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Users",
 			"description": "Users",
 			"item": [
@@ -18,7 +163,7 @@
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
-								"exec": "tests[\"User Already registered \"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"Register successful Code\"] = jsonData.code === \"1000\";\n\n/*var jsonData = JSON.parse(responseBody);\ntests[\"Already registered message\"] = jsonData.message === \"The user is already registered.\";*/\n\npostman.setEnvironmentVariable (\"registeredUID\", jsonData.uid);\n\n"
+								"exec": "tests[\"User Already registered \"] = responseCode.code === 200;\n\nvar jsonData = JSON.parse(responseBody);\ntests[\"Register successful Code\"] = jsonData.code === \"1000\";\n\n/*var jsonData = JSON.parse(responseBody);\ntests[\"Already registered message\"] = jsonData.message === \"The user is already registered.\";*/\n\npostman.setEnvironmentVariable (\"registeredUID\", jsonData.uid);"
 							}
 						}
 					],
