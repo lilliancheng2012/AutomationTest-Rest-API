@@ -52,7 +52,7 @@ Run `mvn spring-boot:run` to start Rest Rent APi service. After server starting,
 
 ### Example for set parameter
 
-1. For this createInfo Api, if you want to get this response id to use for other test case's data
+1. For this createInfo API, eg: if you want to get this response id to use for other test case's data
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/0.PNG)
  
 2. You can add parameter in 'Manage Environments' if needed:
@@ -61,7 +61,7 @@ Run `mvn spring-boot:run` to start Rest Rent APi service. After server starting,
 3. After added, the environment display like this:
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/Manage%20Env.2.PNG)
 
-4. Choose and make sure we used the correct environment
+4. Choose and make sure we used the correct environment when execute test case.
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/6.PNG)
 
 5. Add command to capture the id `registeredInfoID` in 'Tests':
@@ -79,7 +79,7 @@ Run `mvn spring-boot:run` to start Rest Rent APi service. After server starting,
 9. You can check in Database, the fields' value have been updated.
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/5.PNG)
 
-10. Use this id in other API's test case, for example below deleteInfoById API, update the URL `/id` to `{{registeredInfoID}}` in Body Information.
+10. Use this id in other API's test case, for example below deleteInfoById API, update the URL `/id` to `{{registeredInfoID}}` .
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/7.PNG)
 
 11. Execute this deleteInfoById API's case, then click on the eye to check the recorded `registeredInfoID` is the same one.
