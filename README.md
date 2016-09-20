@@ -37,7 +37,7 @@ Run `mvn spring-boot:run` to start Rest Rent APi service. After server starting,
 
 4. Create new case for API call in 'New Tab': 2) Select API Call (GET/Put/POST/DELETE)
 
-5. Create new case for API call in 'New Tab': 3) Set Authorization, Header, Body Information accordingly your API call (Please refer `http://localhost:8080/api/swagger-ui.html` for detais)
+5. Create new case for API call in 'New Tab': 3) Set Authorization, Header, Body Information accordingly your API call (Please refer `http://localhost:8080/api/swagger-ui.html` for details)
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/19-09-16/Header.PNG)
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/19-09-16/Body.PNG)
 
