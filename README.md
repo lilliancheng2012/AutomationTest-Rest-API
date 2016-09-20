@@ -70,23 +70,23 @@ Run `mvn spring-boot:run` to start Rest Rent APi service. After server starting,
 6. Click on Send button to execute this case, and then click the eye, you will see the `registeredInfoID` had been recorded there.
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/1.PNG)
 
-7. Use this id in other API's test case, for example below updateInfo API, update `"id":"{{registeredInfoID}}"` in Body Information.
+7. Use this id in other API's test case, for example updateInfo API, update `"id":"{{registeredInfoID}}"` in Body Information.
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/3.PNG)
 
 8. Executed this updateInfo API test case, and click on the eye to check the recorded `registeredInfoID` is the same one.
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/4.PNG)
 
-9. You can check in Database, the fields' value have been updated.
+9. You can check in DB, the fields' value have been updated.
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/5.PNG)
 
-10. Use this id in other API's test case, for example below deleteInfoById API, update the URL `/id` to `{{registeredInfoID}}` .
+10. Use this id in deleteInfoById API, update the URL `/id` to `/{{registeredInfoID}}` .
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/7.PNG)
 
 11. Execute this deleteInfoById API's case, then click on the eye to check the recorded `registeredInfoID` is the same one.
 
-12. Check on the Database, the line of this id not exist already.
+12. Check on the DB, this id been deleted already.
 
-13. You can edit your parameter:
+13. You can edit your parameter in 'Manage Environments':
 ![](https://raw.githubusercontent.com/lilliancheng2012/lilliancheng2012.github.io/master/public/img/posts/20-09-16/Manage%20Env.3.PNG)
 
 
